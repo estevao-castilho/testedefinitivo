@@ -1,24 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 
-// Extendemos o tipo global do Node.js para incluir nossa variável prisma
 declare global {
-  namespace NodeJS {
-    interface Global {
-      prisma?: PrismaClient
-    }
-  }
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClient | undefined
 }
 
-// Inicialização segura para TypeScript
-const prisma: PrismaClient = (() => {
-  if (process.env.NODE_ENV === 'production') {
-    return new PrismaClient()
-  } else {
-    if (!global.prisma) {
-      global.prisma = new PrismaClient()
-    }
-    return global.prisma
-  }
-})()
+const prisma = globalThis.prisma || new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') {
+  globalThis.prisma = prisma
+}
 
 export default prisma
