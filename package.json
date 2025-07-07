@@ -24,4 +24,10 @@
     "prisma": "^6.11.1",
     "typescript": "^5"
   }
+  {
+  "scripts": {
+    "build": "prisma generate && next build",
+    "postinstall": "prisma generate"
+  }
+}
 }
