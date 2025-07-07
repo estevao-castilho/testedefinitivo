@@ -1,8 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-// Extensão de tipo segura para TypeScript
 declare global {
-  // eslint-disable-next-line no-var
   var prisma: PrismaClient | undefined
 }
 
