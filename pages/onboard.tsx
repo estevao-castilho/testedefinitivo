@@ -40,8 +40,9 @@ export default function Onboard() {
         setError(data.message || 'Erro no cadastro');
       }
     } catch (err) {
-      setError('Erro ao conectar com o servidor');
-    }
+  console.error('Erro no cadastro:', err);
+  setError('Erro ao conectar com o servidor');
+}
   };
 
   return (

@@ -22,9 +22,12 @@ export default function Login() {
         throw new Error(data.message);
       }
       router.push('/account');
-    } catch (err: any) {
-      setError('Esta combinação de e-mail e senha está incorreta!');
-    }
+    } catch (err: unknown) {
+  if (err instanceof Error) {
+    console.error('Erro durante o login:', err.message);
+  }
+  setError('Esta combinação de e-mail e senha está incorreta!');
+}
   };
 
   return (
