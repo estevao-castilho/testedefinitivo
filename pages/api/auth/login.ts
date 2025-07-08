@@ -1,9 +1,7 @@
-// pages/api/auth/login.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
-import { serialize, CookieSerializeOptions } from 'cookie'; 
-
+import { serialize } from 'cookie';
 
 const prismaLogin = new PrismaClient();
 

@@ -1,4 +1,3 @@
-// pages/api/auth/onboard.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
@@ -24,7 +23,7 @@ export default async function onboard(req: NextApiRequest, res: NextApiResponse)
     refById = refBy.id;
   }
 
-  const newUser = await prisma.user.create({
+  await prisma.user.create({
     data: {
       email,
       password: hashedPassword,
