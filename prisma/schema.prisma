@@ -5,13 +5,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Post {
-  id        String     @default(cuid()) @id
+  id        String  @id @default(cuid())
   title     String
   content   String?
   published Boolean @default(false)
@@ -20,11 +20,17 @@ model Post {
 }
 
 model User {
-  id            String       @default(cuid()) @id
-  name          String?
-  email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Post[]
-  @@map(name: "users")
+  id           String   @id @default(cuid())
+  email        String   @unique
+  password     String
+  referralCode String   @unique
+  referredById String?
+  references   Int      @default(0)
+  bonus        Float    @default(0)
+  createdAt    DateTime @default(now())
+
+  referredBy User?  @relation("Referrals", fields: [referredById], references: [id])
+  referrals  User[] @relation("Referrals")
+
+  posts Post[] // <- adiciona esta linha para completar a relação
 }
