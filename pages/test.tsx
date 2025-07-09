@@ -1,4 +1,8 @@
-// pages/test.tsx
+/**
+ * @author Estevao Castilho Soares Aquino
+ * @description Página de teste
+ * @created YYYY-MM-DD
+ */
 import React from 'react';
 
 // Componente React padrão

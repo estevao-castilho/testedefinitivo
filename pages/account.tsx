@@ -1,4 +1,8 @@
-// pages/account.tsx
+/**
+ * @author Estevao Castilho Soares Aquino
+ * @description Página da conta 
+ * @created YYYY-MM-DD
+ */
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Auth.module.css';

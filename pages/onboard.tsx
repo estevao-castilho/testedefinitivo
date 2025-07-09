@@ -1,3 +1,8 @@
+/**
+ * @author Estevao Castilho Soares Aquino
+ * @description Página de cadastro (onboarding) do sistema
+ * @created YYYY-MM-DD
+ */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

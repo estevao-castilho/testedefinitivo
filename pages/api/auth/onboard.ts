@@ -1,3 +1,8 @@
+/**
+ * @author Estevao Castilho Soares Aquino
+ * @description Página de cadastro (onboarding) do sistema
+ * @created YYYY-MM-DD
+ */
 import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
