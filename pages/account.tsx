@@ -1,6 +1,7 @@
 // pages/account.tsx
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import styles from '../styles/Auth.module.css';
 
 type AccountData = {
   references: number;
@@ -32,11 +33,20 @@ export default function Account() {
   if (!data) return <p>Carregando...</p>;
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl mb-4">Minha Conta</h1>
-      <p>Número de referências: <strong>{data.references}</strong></p>
-      <p>Bônus recebido: <strong>R$ {data.bonus.toFixed(2)}</strong></p>
-      <button onClick={handleLogout} className="mt-6 w-full p-2 bg-red-600 text-white rounded">
+    <div className={styles.container}>
+      <h1 className={styles.title}>Minha Conta</h1>
+      
+      {/* Informações da conta */}
+      <div className="space-y-2">
+        <p>Número de referências: <strong>{data.references}</strong></p>
+        <p>Bônus recebido: <strong>R$ {data.bonus.toFixed(2)}</strong></p>
+      </div>
+
+      {/* Botão de logout */}
+      <button 
+        onClick={handleLogout} 
+        className={`${styles.button} mt-6 bg-red-600 hover:bg-red-700`}
+      >
         Sair
       </button>
     </div>

@@ -1,6 +1,7 @@
 // pages/login.tsx
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import styles from '../styles/Auth.module.css';
 
 export default function Login() {
   const router = useRouter();
@@ -30,19 +31,20 @@ export default function Login() {
 }
   };
 
-  return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl mb-4">Login</h1>
-      {error && <p className="text-red-600 mb-2">{error}</p>}
+  
+    return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Login</h1>
+      {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block">E-mail</label>
           <input
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full border p-2 rounded"
+            className={styles.input}
           />
         </div>
         <div>
@@ -50,12 +52,12 @@ export default function Login() {
           <input
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full border p-2 rounded"
+            className={styles.input}
           />
         </div>
-        <button type="submit" className="w-full p-2 bg-green-600 text-white rounded">
+        <button type="submit" className={styles.button}>
           Entrar
         </button>
       </form>

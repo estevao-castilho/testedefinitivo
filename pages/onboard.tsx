@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import styles from '../styles/Auth.module.css';
+
 
 export default function Onboard() {
   const [email, setEmail] = useState('');
@@ -45,14 +47,24 @@ export default function Onboard() {
 }
   };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
-        <h2 className="text-2xl font-bold text-center">Cadastro</h2>
-        {error && <p className="text-red-500 text-center">{error}</p>}
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+return (
+  <div className={styles.container}>
+    <div className={styles.card}>
+      <div className={styles.cardContent}>
+        <div className="text-center mb-8">
+          <h2 className={styles.title}>Crie sua conta</h2>
+          <p className={styles.subtitle}>Preencha seus dados para começar</p>
+        </div>
+
+        {error && (
+          <div className={styles.error}>
+            {error}
+          </div>
+        )}
+
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label}>
               Email
             </label>
             <input
@@ -60,13 +72,14 @@ export default function Onboard() {
               name="email"
               type="email"
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className={styles.input}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+
+          <div className={styles.formGroup}>
+            <label htmlFor="password" className={styles.label}>
               Senha
             </label>
             <input
@@ -74,35 +87,47 @@ export default function Onboard() {
               name="password"
               type="password"
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className={styles.input}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <p className={styles.hint}>
+              Mínimo 6 caracteres com pelo menos 1 número e 1 letra
+            </p>
           </div>
-          <div>
-            <label htmlFor="referralCode" className="block text-sm font-medium text-gray-700">
+
+          <div className={styles.formGroup}>
+            <label htmlFor="referralCode" className={styles.label}>
               Código de Referência (opcional)
             </label>
             <input
               id="referralCode"
               name="referralCode"
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className={styles.input}
               value={referralCode}
               onChange={(e) => setReferralCode(e.target.value)}
               maxLength={6}
             />
           </div>
-          <div>
+
+          <div className="pt-2">
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className={styles.button}
             >
-              CADASTRAR
+              Cadastrar
             </button>
           </div>
         </form>
+
+        <div className={styles.linkContainer}>
+          Já tem uma conta?{' '}
+          <a href="/login" className={styles.link}>
+            Faça login
+          </a>
+        </div>
       </div>
     </div>
-  );
-}
+  </div>
+);}
