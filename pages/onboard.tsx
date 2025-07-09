@@ -24,7 +24,7 @@ export default function Onboard() {
     }
 
     try {
-      const response = await fetch('/api/onboard', {
+      const response = await fetch('/api/auth/onboard', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
