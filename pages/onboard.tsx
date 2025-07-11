@@ -5,8 +5,8 @@
  */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import styles from '../styles/Auth.module.css';
+import Link from 'next/link';
 
 export default function Onboard() {
   const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ export default function Onboard() {
     }
 
     try {
-      const response = await fetch('/api/auth/onboard', {
+      const response = await fetch('/api/onboard', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ export default function Account() {
 
   useEffect(() => {
     async function fetchAccount() {
-      const res = await fetch('/api/auth/account');
+      const res = await fetch('/api/account');
       if (res.status === 401) {
         router.push('/login');
         return;
@@ -30,7 +30,7 @@ export default function Account() {
   }, [router]);
 
   const handleLogout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' });
+    await fetch('/api/logout', { method: 'POST' });
     router.push('/login');
   };
 
